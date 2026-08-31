@@ -1,13 +1,8 @@
 import Image from "next/image";
-import { stripe } from "@/lib/stripe";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Coursel from "@/components/courserl";
 export default async function Home() {
-  const products = await stripe.products.list({
-    expand: ["data.default_price"],
-    limit: 5,
-  });
+ 
 
   return (
     <div>
@@ -29,14 +24,7 @@ export default async function Home() {
             </Button>
           </div>
 
-          <Image
-            alt="banner tag"
-            width={450}
-            height={450}
-            src={products.data[0].images[0]}
-            className="rounded-lg object-cover"
-            priority
-          />
+          
         </div>
         <Link href="/dashboard/customers">browse all customers</Link>
       </section>
